@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add your tasks</title>
+
+    <style>
+        div{
+            background-color: rgb(227, 246, 240);
+        }
+        ul li{
+            font-size: 20px;
+            height: 2rem;
+            padding: 10px;
+        }
+        ul li button{
+            margin: 0 20px;
+        }
+        button{
+            height: 2rem;
+            width: 5rem;
+            background-color: rgb(174, 234, 228);
+            border: none;
+            box-shadow: 0 6px 6px rgba(27, 25, 25, 0.1);
+        }
+        input{
+            height: 2rem;
+            background-color: rgb(174, 234, 228);
+            border: none;
+            box-shadow: 0 6px 6px rgba(27, 25, 25, 0.1);
+            padding: 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>To do app</h1>
+
+    <p><b>Add task</b></p>
+    <input type="text" placeholder="Enter your task">
+    &nbsp;&nbsp;&nbsp;
+    <button class="addbtn">Add task</button>
+
+    <h2>Your tasks</h2>
+    <hr>
+    <div><ul></ul> </div>
+
+    <script>
+        let task = document.querySelector("input");
+        let addbtn = document.querySelector(".addbtn");
+        let ul = document.querySelector("ul");
+
+        addbtn.addEventListener("click", (evt)=>{
+            let newTask = document.createElement("li");
+            newTask.innerText = task.value;
+
+            let btn = document.createElement("button");
+            btn.innerText = "delete";
+            btn.className = "delbtn";
+            
+            newTask.append(btn);
+            ul.append(newTask);
+
+            task.value = "";
+        });
+
+        ul.addEventListener("click", (evt)=>{
+            console.log(evt.target.className);
+                // if(evt.target.className == "delbtn"){
+                //     evt.target.parentElement.remove();
+                // }
+
+                if(evt.target.nodeName == "BUTTON"){
+                    evt.target.parentElement.remove();
+                }
+        });
+
+    </script>
+</body>
+</html>
